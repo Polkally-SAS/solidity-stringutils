@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL
 /*
  * @title String & slice utility library for Solidity contracts.
  * @author Nick Johnson <arachnid@notdot.net>
@@ -34,7 +35,7 @@
  *      corresponding to the left and right parts of the string.
  */
 
-pragma solidity ^0.4.14;
+pragma solidity ^0.8.0;
 
 library strings {
     struct slice {
@@ -42,6 +43,12 @@ library strings {
         uint _ptr;
     }
 
+    /**
+     * copy pointer between memory
+     * @param dest  to point address uint
+     * @param src where data is copied from
+     * @param len memory size
+     */
     function memcpy(uint dest, uint src, uint len) private pure {
         // Copy word-length chunks while possible
         for(; len >= 32; len -= 32) {
